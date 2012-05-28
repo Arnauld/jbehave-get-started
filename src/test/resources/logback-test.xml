@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{35} - %msg%n</Pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.springframework" level="warn" />
+  <logger name="freemarker" level="warn" />
+  <logger name="bdd101" level="debug" />
+
+  <root level="error">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
