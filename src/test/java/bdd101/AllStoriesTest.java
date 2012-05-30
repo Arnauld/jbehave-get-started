@@ -37,7 +37,7 @@ public class AllStoriesTest extends JUnitStories {
                 .doIgnoreFailureInView(true)//
                 .doVerboseFailures(true)//
                 .useThreads(2)//
-                .useStoryTimeoutInSecs(60);
+                .useStoryTimeoutInSecs(6000);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class AllStoriesTest extends JUnitStories {
     @Override
     protected List<String> storyPaths() {
         URL searchInURL = codeLocationFromClass(this.getClass());
-        return new StoryFinder().findPaths(searchInURL, "**/*.story", "");
+        return new StoryFinder().findPaths(searchInURL, "**/*.story", "**/fail/*");
     }
 
     @Override
