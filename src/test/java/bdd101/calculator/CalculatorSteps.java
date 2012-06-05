@@ -4,6 +4,7 @@ import static bdd101.calculator.CalculatorContext.calculator;
 import static bdd101.calculator.CalculatorContext.context;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.jbehave.core.annotations.AfterScenario;
@@ -58,5 +59,11 @@ public class CalculatorSteps {
         Exception lastError = context().getLastError();
         assertThat("Not in error situtation", lastError, notNullValue());
         assertThat("Wrong error message", lastError.getMessage(), equalTo(errorMessage));
+    }
+    
+    @Then("the calculator should not be in error")
+    public void assertNoErrorMessageIsDisplayed() {
+        Exception lastError = context().getLastError();
+        assertThat(lastError, nullValue());
     }
 }

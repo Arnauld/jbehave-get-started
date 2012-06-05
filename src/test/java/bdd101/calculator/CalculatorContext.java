@@ -23,7 +23,7 @@ public class CalculatorContext {
         threadContext.remove();
     }
     
-    private Calculator calculator;
+    private final Calculator calculator;
     private Exception lastError;
     
     public CalculatorContext() {

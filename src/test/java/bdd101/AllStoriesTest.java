@@ -3,8 +3,6 @@ package bdd101;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML_TEMPLATE;
-import static org.jbehave.core.reporters.Format.TXT;
-import static org.jbehave.core.reporters.Format.XML_TEMPLATE;
 
 import java.net.URL;
 import java.util.List;
@@ -12,6 +10,7 @@ import java.util.List;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.failures.FailingUponPendingStep;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.CrossReference;
@@ -49,9 +48,7 @@ public class AllStoriesTest extends JUnitStories {
                 .withCodeLocation(codeLocation) //
                 .withDefaultFormats() //
                 .withFormats(CONSOLE, //
-                        TXT, //
-                        HTML_TEMPLATE, //
-                        XML_TEMPLATE) //
+                        HTML_TEMPLATE) //
                 .withFailureTrace(true) //
                 .withFailureTraceCompression(true) //
                 .withCrossReference(xref)
@@ -59,6 +56,7 @@ public class AllStoriesTest extends JUnitStories {
         return new MostUsefulConfiguration() //
                 .useStoryLoader(new UTF8StoryLoader(embeddableClass)) //
                 .useStoryReporterBuilder(storyReporter) //
+                .usePendingStepStrategy(new FailingUponPendingStep())
                 .useStepMonitor(xref.getStepMonitor())//
                 ;
     }
